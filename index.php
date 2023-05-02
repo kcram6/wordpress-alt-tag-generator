@@ -23,29 +23,9 @@ function featured_image_alt_text($metadata, $object_id, $meta_key, $single) {
     }
     return $metadata;
 }
-
 add_filter('get_post_metadata', 'featured_image_alt_text', 10, 4);
 
 
-
-
-/* Automatically set the image Title & Alt-Text upon upload*/
-add_action( 'add_attachment', 'my_set_image_meta_upon_image_upload' );
-// function my_set_image_meta_upon_image_upload( $post_ID ) {
-//     // Check if uploaded file is an image, else do nothing
-//     if ( wp_attachment_is_image( $post_ID ) ) {
-//         $my_image_title = get_post( $post_ID )->post_title;
-//         // Sanitize the title:  remove hyphens, underscores & extra spaces:
-//         $my_image_title = preg_replace( '%\s*[-_\s]+\s*%', ' ',  $my_image_title );
-//         // Sanitize the title:  capitalize first letter of every word (other letters lower case):
-//         $my_image_title = ucwords( strtolower( $my_image_title ) );
-//         // Create an array with the image meta (Title, Caption, Description) to be updated
-//         $my_image_meta = array(
-//             'ID'        => $post_ID,            // Specify the image (ID) to be updated
-//             'post_title'    => $my_image_title,     // Set image Title to sanitized title
-//         );
-//     }
-// }
 /* Fetch image alt text from media library */
 function get_image_alt_text($image_url) {
     if ( ! $image_url ) return '';
@@ -75,7 +55,6 @@ function update_module_alt_text( $attrs, $unprocessed_attrs, $slug ) {
     return $attrs;
 }
 add_filter( 'et_pb_module_shortcode_attributes', 'update_module_alt_text', 20, 3 );
-
 
 
 ?>

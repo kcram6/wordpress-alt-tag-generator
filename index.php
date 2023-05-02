@@ -1,4 +1,14 @@
 <?php
+/**
+* Plugin Name: Empty Alt Tag Generator
+* Plugin URI: https://hfbtechnologies.com/
+* Description: Use the page title as the image's alt tag if it is empty in the media library or in the Divi settings.
+* Version: 1.1
+* Author: Kathleen Cram
+* Author URI: https://hfbtechnologies.com/
+**/
+
+
 function featured_image_alt_text($metadata, $object_id, $meta_key, $single) {
     if(isset($meta_key) && $meta_key == '_wp_attachment_image_alt'
         && get_post_thumbnail_id() == $object_id
